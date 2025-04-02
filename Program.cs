@@ -32,19 +32,19 @@ class Program
         switch (char.ToLower(userOption))
         {
             case 'a':
-                Operations.AdditionGame("You're playing an addition game");
+                Operations.AdditionGame();
                 break;
             case 's':
-                Operations.SubtractionGame("You're playing a subtraction game");
+                Operations.SubtractionGame();
                 break;
             case 'm':
-                Operations.MultiplicationGame("You're playing a multiplication game");
+                Operations.MultiplicationGame();
                 break;
             case 'd':
-                Operations.DivisionGame("You're playing a division game");
+                Operations.DivisionGame();
                 break;
             case 'v':
-                Operations.ViewPreviousGames("List of Games");
+             //   Operations.ViewPreviousGames("List of Games");
                 break;
             case 'q':
                 Console.WriteLine("Goodbye");
