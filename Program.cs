@@ -79,56 +79,58 @@ Q - Quit The Program");
             var random = new Random();
             var score = 0;
 
-            int firstNumber;
-            int secondNumber;
-
             Console.WriteLine("How many times would you like to play?");
             var numberOfRounds = int.Parse(Console.ReadLine());
 
             char difficultyLevel = ChooseDifficultyLevel();
 
+            var startTime = DateTime.Now;
+
             for (int i = 0; i < numberOfRounds; i++)
             {
-                firstNumber = random.Next(1, 9);
-                secondNumber = random.Next(1, 9);
+                var operands = GetOperands(difficultyLevel, 'a');
+                var firstNumber = operands[0];
+                var secondNumber = operands[1];
 
                 Console.WriteLine($"How much is {firstNumber} + {secondNumber}?");
                 var result = Console.ReadLine();
 
                 if (int.Parse(result) == firstNumber + secondNumber)
                 {
-                    Console.WriteLine("Correct!/n");
+                    Console.WriteLine("Correct!\n");
                     score++;
                 }
                 else
                 {
-                    Console.WriteLine("Incorrect!/n");
+                    Console.WriteLine("Incorrect!\n");
                 }
             }
-            Console.WriteLine($"Game over. Your final score is {score} out of {numberOfRounds}.");
+            var endTime = DateTime.Now;
+            var totalTime = endTime - startTime;
+
+            Console.WriteLine($"Game over. Your final score is {score} out of {numberOfRounds} in {totalTime.TotalSeconds:0.00} seconds. Press any key to go back to main menu.");
             Console.ReadKey();
 
-            gamesHistory.Add($"{DateTime.Now} - Addition - Score: {score} out of {numberOfRounds}");
-
+            gamesHistory.Add($"{DateTime.Now} - Addition - Difficulty: {char.ToUpper(difficultyLevel)} - Score: {score} out of {numberOfRounds} - Time: {totalTime.TotalSeconds:0.00}s");
         }
 
         void SubtractionGame()
         {
             Console.Clear();
-
-            var random = new Random();
             var score = 0;
-
-            int firstNumber;
-            int secondNumber;
 
             Console.WriteLine("How many times would you like to play?");
             var numberOfRounds = int.Parse(Console.ReadLine());
 
+            char difficultyLevel = ChooseDifficultyLevel();
+
+            var startTime = DateTime.Now;
+
             for (int i = 0; i < numberOfRounds; i++)
             {
-                firstNumber = random.Next(1, 9);
-                secondNumber = random.Next(1, 9);
+                var operands = GetOperands(difficultyLevel, 's');
+                var firstNumber = operands[0];
+                var secondNumber = operands[1];
 
                 Console.WriteLine($"How much is {firstNumber} - {secondNumber}?");
                 var result = Console.ReadLine();
@@ -143,96 +145,129 @@ Q - Quit The Program");
                     Console.WriteLine("Incorrect!\n");
                 }
             }
-            Console.WriteLine($"Game over. Your final score is {score} out of {numberOfRounds}.");
+
+            var endTime = DateTime.Now;
+            var totalTime = endTime - startTime;
+
+            Console.WriteLine($"Game over. Your final score is {score} out of {numberOfRounds} in {totalTime.TotalSeconds:0.00} seconds. Press any key to go back to main menu.");
             Console.ReadKey();
 
-            gamesHistory.Add($"{DateTime.Now} - Subtraction - Score: {score} out of {numberOfRounds}");
+            gamesHistory.Add($"{DateTime.Now} - Subtraction - Difficulty: {char.ToUpper(difficultyLevel)} - Score: {score} out of {numberOfRounds} - Time: {totalTime.TotalSeconds:0.00}s");
         }
 
         void MultiplicationGame()
         {
             Console.Clear();
-
-            var random = new Random();
             var score = 0;
-
-            int firstNumber;
-            int secondNumber;
 
             Console.WriteLine("How many times would you like to play?");
             var numberOfRounds = int.Parse(Console.ReadLine());
 
+            char difficultyLevel = ChooseDifficultyLevel();
+
+            var startTime = DateTime.Now;
+
             for (int i = 0; i < numberOfRounds; i++)
             {
-                firstNumber = random.Next(1, 9);
-                secondNumber = random.Next(1, 9);
+                var operands = GetOperands(difficultyLevel, 'm');
+                var firstNumber = operands[0];
+                var secondNumber = operands[1];
 
                 Console.WriteLine($"How much is {firstNumber} * {secondNumber}?");
                 var result = Console.ReadLine();
 
                 if (int.Parse(result) == firstNumber * secondNumber)
                 {
-                    Console.WriteLine("Correct!");
+                    Console.WriteLine("Correct!\n");
                     score++;
                 }
                 else
                 {
-                    Console.WriteLine("Incorrect!");
+                    Console.WriteLine("Incorrect!\n");
                 }
             }
-            Console.WriteLine($"Game over. Your final score is {score} out of {numberOfRounds}.");
+
+            var endTime = DateTime.Now;
+            var totalTime = endTime - startTime;
+
+            Console.WriteLine($"Game over. Your final score is {score} out of {numberOfRounds} in {totalTime.TotalSeconds:0.00} seconds. Press any key to go back to main menu.");
             Console.ReadKey();
 
-            gamesHistory.Add($"{DateTime.Now} - Multiplication - Score: {score} out of {numberOfRounds}");
+            gamesHistory.Add($"{DateTime.Now} - Multiplication - Difficulty: {char.ToUpper(difficultyLevel)} - Score: {score} out of {numberOfRounds} - Time: {totalTime.TotalSeconds:0.00}s");
         }
 
         void DivisionGame()
         {
             Console.Clear();
             var score = 0;
+
             Console.WriteLine($"How many times would you like to play?");
             var numberOfRounds = int.Parse(Console.ReadLine());
 
+            char difficultyLevel = ChooseDifficultyLevel();
+
+            var startTime = DateTime.Now;
+
             for (int i = 0; i < numberOfRounds; i++)
             {
-                var divisionNumbers = GetDivisionNumbers();
-
-
-                var firstNumber = divisionNumbers[0];
-                var secondNumber = divisionNumbers[1];
+                var operands = GetOperands(difficultyLevel, 'd');
+                var firstNumber = operands[0];
+                var secondNumber = operands[1];
 
                 Console.WriteLine($"How much is {firstNumber} / {secondNumber}?");
-                var input = Console.ReadLine();
+                var result = Console.ReadLine();
 
-                if (int.Parse(input) == firstNumber / secondNumber)
+                if (int.Parse(result) == firstNumber / secondNumber)
                 {
-                    Console.WriteLine("Correct!");
+                    Console.WriteLine("Correct!\n");
                     score++;
                 }
                 else
                 {
-                    Console.WriteLine("Incorrect!");
+                    Console.WriteLine("Incorrect!\n");
                 }
             }
-            Console.WriteLine($"Game over. Your final score is {score} out of {numberOfRounds}.");
+
+            var endTime = DateTime.Now;
+            var totalTime = endTime - startTime;
+
+            Console.WriteLine($"Game over. Your final score is {score} out of {numberOfRounds} in {totalTime.TotalSeconds:0.00} seconds. Press any key to go back to main menu.");
             Console.ReadKey();
 
-            gamesHistory.Add($"{DateTime.Now} - Division - Score: {score} out of {numberOfRounds}");
+            gamesHistory.Add($"{DateTime.Now} - Division - Difficulty: {char.ToUpper(difficultyLevel)} - Score: {score} out of {numberOfRounds} - Time: {totalTime.TotalSeconds:0.00}s");
         }
 
 
-        int[] GetDivisionNumbers()
+        int[] GetOperands(char difficultyLevel, char gameType)
         {
+            int topOfRange = 0;
+
+            switch (difficultyLevel)
+            {
+                case 'e':
+                    topOfRange = gameType == 'd' ? 99 : 9;
+                    break;
+                case 'm':
+                    topOfRange = gameType == 'd' ? 999 : 99;
+                    break;
+                case 'h':
+                    topOfRange = gameType == 'd' ? 9999 : 999;
+                    break;
+            }
+
             var random = new Random();
-            var firstNumber = random.Next(1, 99);
-            var secondNumber = random.Next(1, 99);
+            var firstNumber = random.Next(1, topOfRange);
+            var secondNumber = random.Next(1, topOfRange);
 
             var result = new int[2];
 
-            while (firstNumber % secondNumber != 0)
+            if (gameType == 'd')
             {
-                firstNumber = random.Next(1, 99);
-                secondNumber = random.Next(1, 99);
+                while (firstNumber % secondNumber != 0)
+                {
+                    firstNumber = random.Next(1, topOfRange);
+                    secondNumber = random.Next(1, topOfRange);
+                }
             }
 
             result[0] = firstNumber;
